@@ -2,8 +2,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|users_id|integer|null: false|
-|groups_id|integer|null: false|
+|users_id|integer|null: false, foreign_key: true|
+|groups_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -14,7 +14,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|text|null: false|
+|name|text|null: false, index: true|
 
 ### Association
 - has_many :messages

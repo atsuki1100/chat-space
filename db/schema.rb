@@ -34,10 +34,14 @@ ActiveRecord::Schema.define(version: 20190619080026) do
   end
 
   create_table "users_groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "users_id"
-    t.integer  "groups_id"
+    t.integer  "users_id",   null: false
+    t.integer  "groups_id",  null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["groups_id"], name: "index_users_groups_on_groups_id", using: :btree
+    t.index ["users_id"], name: "index_users_groups_on_users_id", using: :btree
   end
 
+  add_foreign_key "users_groups", "groups", column: "groups_id"
+  add_foreign_key "users_groups", "users", column: "users_id"
 end
